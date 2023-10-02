@@ -1,5 +1,3 @@
-![Jessica](https://media.giphy.com/media/B1bMjDNIwe4T09fNai/giphy.gif)
-
 This is a copy of a simple project I made during my JS course last year. The task was to create a webpage without any inherent purpose, except for the joy of visiting it and interact with it. It's nothing special, albeit a bit surreal, but has got some small issues that would be nice if they were tended to.
 
 The deployed project:
