@@ -1,32 +1,30 @@
-/* actionContainer:na är hållar-elemenet som ska interageras med och manipuleras på sidan. */
-
 const actionContainer = document.querySelector('#action-container-primary');
 
 const secActionContainer = document.querySelector(
   '#action-container-secondary'
 );
 
-/* Main-sektionen mellan header och footer */
+/* Main section between header och footer */
+
 const mainSection = document.querySelector('main');
 
-/* Fält med mindre text */
+/* Fields with smaller text */
 
 const actionParagraph = actionContainer.querySelector('p');
 actionParagraph.classList.add('positionAbsolute');
 
-/* Fält med större text */
+/* Fields with larger text */
 
 const actionHeading = document.createElement('h2');
 
 const uselessMainHeading = document.querySelector('h1');
 
-/* Min logotyp som är med en liten stund */
+/* Logotype */
 
 const wolfsHead = document.querySelector('#wolfsHead');
 
 const wolfsEyes = wolfsHead.querySelector('#wolfsEyes');
 
-/* Objekt med sökvägar till bilder och ljud */
 
 const uselessResources = {
   images: {
@@ -39,11 +37,11 @@ const uselessResources = {
   },
 };
 
-/* uselessCounter används för iterationen för det som kommer att ske på sidan under "PART I". */
+/* uselessCounter iterates through what happebs during "PART I". */
 
 let uselessCounter = 0;
 
-/* Inte snyggt, men här kommer en jättestor if-sats */
+/* Not pretty. This is a huge If-statement. There is probably a better solution out there */
 
 actionContainer.addEventListener('click', () => {
   /* |--- --- PART I: click events --- ---> */
@@ -76,12 +74,12 @@ actionContainer.addEventListener('click', () => {
 
     actionParagraph.textContent = 'Here again!';
   } else if (uselessCounter === 6) {
-    /* Tar bort actioContainer från skärmen */
+    /* Removes actioContainer from screen */
 
     actionContainer.classList.add('offScreen');
     actionContainer.classList.add('hidden');
 
-    /* Skapar ett bildelement för att ropa in en rätt så enorm svg-fil */
+    /* Creates an image element to hold an svg */
 
     const prettyWolfImg = document.createElement('img');
     prettyWolfImg.src = uselessResources.images.prettyWolf;
@@ -90,11 +88,11 @@ actionContainer.addEventListener('click', () => {
 
     secActionContainer.appendChild(prettyWolfImg);
 
-    /* Flyttar in den sekundära actionContainer:n */
+    /* Moves in second actionContainer */
 
     secActionContainer.classList.toggle('onScreen');
 
-    /* Skapar ett ljudelement som spelas upp */
+    /* Creates and play a sound element */
 
     const prettyWolfHowl = document.createElement('audio');
     prettyWolfHowl.src = uselessResources.soundEffects.howl[0];
@@ -102,7 +100,7 @@ actionContainer.addEventListener('click', () => {
 
     prettyWolfHowl.play();
 
-    /* Byter ut texten i H1 för att, varför inte? */
+    /* Changes text in the H1 */
 
     uselessMainHeading.textContent = 'AAAOOOOOOOO....!';
 
@@ -114,7 +112,7 @@ actionContainer.addEventListener('click', () => {
 
     /* |--- --- PART II: Mouse over-events --- ---> */
 
-    /* Temporär knapp för att avsluta "PART I" och lägga till lite roliga färger och byta ut lite text i h1*/
+    /* Temporary button that concludes "PART I" */
 
     secActionContainer.addEventListener('click', () => {
       uselessMainHeading.classList.remove('uselessHeading');
@@ -124,26 +122,26 @@ actionContainer.addEventListener('click', () => {
       secActionContainer.classList.remove('offScreen', 'onScreen');
       secActionContainer.classList.add('exitStageLeft', 'hidden');
 
-      /* Fördröjning för att ge en smidigare och mer spännande upplevelse */
+      /* Adds a delay */
 
       setTimeout(() => {
         uselessMainHeading.textContent = "Why don't you... move around?";
       }, 2000);
 
-      /* Med for-loop skapas åtta div:ar som ska innehålla rivmärkes-svg:n  */
+      /* This loops out eight div:s with claw marks  */
 
       for (let i = 0; i < 8; i++) {
-        /* Fyra st. div:ar */
+      
         const clawDiv = document.createElement('div');
         clawDiv.classList.add('positionAbsolute', 'clawContainer');
 
-        /* Bilderna */
+        /* Images */
         const clawMarksImg = document.createElement('img');
         clawMarksImg.src = uselessResources.images.clawRend;
         clawMarksImg.alt = 'Stylised image of claw rending marks';
         clawMarksImg.classList.add('image', 'opacity');
 
-        /* Bildrotation */
+        /* Image rotation */
         const rotation = Math.floor(Math.random() * 360);
         clawMarksImg.style.transform = `rotate(${rotation}deg)`;
 
@@ -154,22 +152,22 @@ actionContainer.addEventListener('click', () => {
 
       /* --- --- --- --- --- --- --- --- --- --- --- */
 
-      /* Skapar en nod med alla ClawDiv:ar för att kunna slumpa ut deras plats på skärmen. (Tack, Google) */
+      /* Create a node with all ClawDiv:s so they can be placed randomly on screen. (Thanks, Google) */
 
       const clawMarks = document.querySelectorAll('.clawContainer');
 
       for (let i = 0; i < clawMarks.length; i++) {
         const clawMark = clawMarks[i];
 
-        /* Tlll slut skapas här ett mouseover-event på de fyra clawDivarna (clawMarks). Bilderna blir synliga när pekaren går över dem och ett ljud speals upp */
+        /* Mouse-over-event to activate claw marks */
 
-        /* Slumpad positionering i "main" */
+        /* Randomised positioning in "main" */
 
         clawMark.style.transform = 'translate(-50%, -50%)';
         clawMark.style.top = `${Math.floor(Math.random() * 100)}%`;
         clawMark.style.left = `${Math.floor(Math.random() * 100)}%`;
 
-        /* Bild blir synlig och ljud hörs. */
+        /* Image becomes visible and a sound is played. */
 
         clawMark.addEventListener('mouseover', () => {
           const clawMarksImg = clawMark.querySelector('img');
